@@ -1,0 +1,25 @@
+{
+  "name": "Blinds",
+  "version": "1.2.7",
+  "slug": "halkeye_blinds",
+  "description": "Blinds controller!",
+  "startup": "application",
+  "boot": "auto",
+  "devices": ["/dev/mem:/dev/mem:rwm"],
+  "privileged": ["SYS_RAWIO"],
+  "gpio": true,
+  "options": {
+    "server": "172.17.0.1",
+    "port": 1883,
+    "topic": "home/blinds/set",
+    "user": "",
+    "password": ""
+  },
+  "schema": {
+    "server": "str",
+    "port": "port",
+    "topic": "str",
+    "user": "str",
+    "password": "str"
+  }
+}
