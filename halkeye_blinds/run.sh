@@ -15,7 +15,7 @@ PASSWORD=$(jq --raw-output '.password' $CONFIG_PATH)
 while read -r message
 do
   echo $message
-  for blind in 1 2 3 4; do
+  for blind in 1 2 3 4 5 6 7 8; do
     if [ "$message" == "$blind|on" ]; then
         python /blinds.py $blind close || true
     fi

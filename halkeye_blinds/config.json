@@ -1,12 +1,16 @@
 {
   "name": "Blinds",
-  "version": "1.2.7",
+  "version": "1.3.0",
   "slug": "halkeye_blinds",
   "description": "Blinds controller!",
   "startup": "application",
   "boot": "auto",
-  "devices": ["/dev/mem:/dev/mem:rwm"],
-  "privileged": ["SYS_RAWIO"],
+  "devices": [
+    "/dev/mem:/dev/mem:rwm"
+  ],
+  "privileged": [
+    "SYS_RAWIO"
+  ],
   "gpio": true,
   "options": {
     "server": "172.17.0.1",
