@@ -1,6 +1,6 @@
 {
   "name": "Blinds",
-  "version": "1.3.0",
+  "version": "1.3.4",
   "slug": "halkeye_blinds",
   "description": "Blinds controller!",
   "startup": "application",

@@ -9,17 +9,39 @@ except RuntimeError:
         "You can achieve this by using 'sudo' to run your script")
 
 
-PIN_BANK1_COMMON = 9
 PIN_BANK1_CHANNEL2 = 5
 PIN_BANK1_CHANNEL1 = 7
 PIN_BANK1_CLOSE = 11
 PIN_BANK1_OPEN = 13
 
-PIN_BANK2_COMMON = 39
 PIN_BANK2_CHANNEL2 = 37
 PIN_BANK2_CHANNEL1 = 35
 PIN_BANK2_CLOSE = 33
 PIN_BANK2_OPEN = 31
+
+CMD_OPEN = {
+    "1": PIN_BANK1_OPEN,
+    "2": PIN_BANK1_OPEN,
+    "3": PIN_BANK1_OPEN,
+    "4": PIN_BANK1_OPEN,
+
+    "5": PIN_BANK2_OPEN,
+    "6": PIN_BANK2_OPEN,
+    "7": PIN_BANK2_OPEN,
+    "8": PIN_BANK2_OPEN
+}
+
+CMD_CLOSE = {
+    "1": PIN_BANK1_CLOSE,
+    "2": PIN_BANK1_CLOSE,
+    "3": PIN_BANK1_CLOSE,
+    "4": PIN_BANK1_CLOSE,
+
+    "5": PIN_BANK2_CLOSE,
+    "6": PIN_BANK2_CLOSE,
+    "7": PIN_BANK2_CLOSE,
+    "8": PIN_BANK2_CLOSE
+}
 
 CMD_CHANNEL = {
     "1": [[PIN_BANK1_CHANNEL1, PIN_BANK1_CHANNEL2], [GPIO.HIGH, GPIO.HIGH]],
@@ -61,18 +83,16 @@ if channel in INVERSE_CHANNELS:
         mode = "open"
 
 print("select channel %s" % channel)
+
+print(CMD_CHANNEL[channel][0], CMD_CHANNEL[channel][1])
 GPIO.output(CMD_CHANNEL[channel][0], CMD_CHANNEL[channel][1])
 time.sleep(0.5)
 print("select %s" % mode)
 if mode == "close":
-    if channel <= 4:
-        GPIO.output(PIN_BANK1_CLOSE, GPIO.HIGH)
-    else:
-        GPIO.output(PIN_BANK2_CLOSE, GPIO.HIGH)
+    print(CMD_CLOSE[channel], GPIO.HIGH)
+    GPIO.output(CMD_CLOSE[channel], GPIO.HIGH)
 if mode == "open":
-    if channel <= 4:
-        GPIO.output(PIN_BANK1_OPEN, GPIO.HIGH)
-    else:
-        GPIO.output(PIN_BANK2_OPEN, GPIO.HIGH)
+    print(CMD_OPEN[channel], GPIO.HIGH)
+    GPIO.output(CMD_OPEN[channel], GPIO.HIGH)
 time.sleep(1)
 GPIO.cleanup()
