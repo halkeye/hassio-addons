@@ -1,12 +1,14 @@
 {
   "name": "Blinds",
-  "version": "1.3.4",
+  "version": "1.3.6",
   "slug": "halkeye_blinds",
   "description": "Blinds controller!",
-  "startup": "application",
+  "startup": "system",
+  "apparmor": false,
   "boot": "auto",
   "devices": [
-    "/dev/mem:/dev/mem:rwm"
+    "/dev/mem:/dev/mem:rwm",
+    "/dev/gpiomem:/dev/gpiomem:rwm"
   ],
   "privileged": [
     "SYS_RAWIO"
